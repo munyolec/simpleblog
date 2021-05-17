@@ -8,9 +8,11 @@
         {{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }} -
         <a href="{% url 'category' post.category|slugify %} ">{{post.category}}</a> - <i>Published on: {{post.post_date}}</i>
         {% if user.is_authenticated %}   
-        <small><a href="{% url 'update_post' post.pk %} " >(Edit) </a></small>     
-        
-        <small><a href="{% url 'delete_post' post.pk %} " > (Delete) </a></small>
+            {% if user.id == post.author.id %}
+                <small><a href="{% url 'update_post' post.pk %} " >(Edit) </a></small>     
+                
+                <small><a href="{% url 'delete_post' post.pk %} " > (Delete) </a></small>
+            {% endif %} 
     {% endif %} 
         <br/>
     {{ post.body |slice:":200" }}
