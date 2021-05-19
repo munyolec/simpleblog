@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if category_posts %}
-<h2> {{cats}} </h2>
+<h2>The {{cats}} Category</h2>
 <ul>
 {% for post in category_posts %}
     <li><a href="{% url 'article-detail' post.pk %}">
@@ -15,7 +15,7 @@
         {% endif %}  
     </small>
     <br/>
-    {{ post.body |slice:":200" }}
+    {{ post.snippet |slice:":200"|safe }}
     </li>
 {% endfor %}
 </ul>
