@@ -1,4 +1,5 @@
 {%extends 'base.html' %}
+{% load static %}
 {% block title %} {{post.title_tag}} {% endblock %}
 
 {% block content %}
@@ -47,8 +48,13 @@
 <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-2">
+      {%if post.author.profile.profile_pic %}
         <img src="{{post.author.profile.profile_pic.url}}" class="card-img" >
+      
+      {%else%}
+        <img src="{%static 'theblog/images/default_ppic.jpeg' %}" class="card-img" >
       </div>
+      {%endif%}
       <div class="col-md-10">
         <div class="card-body">
           <h5 class="card-title">
