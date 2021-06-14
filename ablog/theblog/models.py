@@ -47,8 +47,12 @@ class Profile(models.Model):
     instagram_url=models.CharField(null=True, blank=True,max_length=255)
     pinterest_url=models.CharField(null=True, blank=True,max_length=255)
 
+
     def __str__(self):
         return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('home')    
 
     
 
